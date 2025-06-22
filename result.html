@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>전배우자 유형 결과</title>
+  <style>
+    body {
+      font-family: 'Pretendard', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+      color: #333;
+    }
+    .container {
+      max-width: 720px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    .result-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      color: #1f3a93;
+    }
+    .advice {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #555;
+    }
+    .counsel {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      background: #f0f8ff;
+      padding: 1rem;
+      border-radius: 0.75rem;
+    }
+    .share {
+      margin-top: 2rem;
+    }
+    .share button {
+      margin: 0.3rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      background-color: #1da1f2;
+      color: white;
+    }
+    .share button.facebook {
+      background-color: #3b5998;
+    }
+    .share button.kakao {
+      background-color: #fee500;
+      color: #3c1e1e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="result-box">
+      <div id="result"></div>
+      <div class="share">
+        <p>🔗 다른 사람도 이 테스트 해보게 공유해보세요!</p>
+        <button onclick="shareTwitter()">🐦 트위터 공유</button>
+        <button class="facebook" onclick="shareFacebook()">📘 페이스북 공유</button>
+        <button class="kakao" onclick="copyLink()">🔗 링크 복사</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const score = parseInt(params.get("score")) || 0;
+
+    let emoji = "", title = "", description = "", advice = "";
+
+    if (score >= 20) {
+      emoji = "💣";
+      title = "감정폭발형 로켓";
+      description = "분노와 감정 과잉 반응이 많은 유형입니다. 상황이 격해지기 쉬우며 이성적 대화가 어렵습니다.";
+      advice = "감정의 파도를 타지 말고 냉정한 중재자와 함께 대화를 유도하세요.";
+    } else if (score >= 14) {
+      emoji = "🎭";
+      title = "회피형 스펀지";
+      description = "갈등이나 책임을 피하려는 경향이 있으며 현실 직면을 회피합니다.";
+      advice = "중립적이며 구체적인 사실 중심의 대화가 중요합니다.";
+    } else if (score >= 8) {
+      emoji = "🧊";
+      title = "냉철한 계산형";
+      description = "감정 표현은 적지만, 현실적인 판단이 빠른 유형입니다.";
+      advice = "데이터와 기록을 활용해 논리적으로 협상하세요.";
+    } else {
+      emoji = "🌈";
+      title = "협력형 평화주의자";
+      description = "조율과 협상에 적극적인 태도를 가진 유형입니다.";
+      advice = "공동 양육이나 자산 협의 등에서 긍정적 접근이 유리합니다.";
+    }
+
+    const resultDiv = document.getElementById("result");
+    resultDiv.innerHTML = `
+      <div class="emoji">${emoji}</div>
+      <h2>${title}</h2>
+      <p>${description}</p>
+      <div class="advice">💡 <strong>조언:</strong> ${advice}</div>
+      <div class="counsel">
+        📞 관련 상담사: <strong>오수진 변호사</strong><br/>
+        전화: 02-6953-6325<br/>
+        
+        전문 분야: 이혼소송 / 재산분할 / 공동양육 협의 등
+      </div>
+    `;
+
+    function shareTwitter() {
+      const url = encodeURIComponent("https://yourdomain.github.io/index.html");
+      const text = encodeURIComponent(`나는 '${title}' 유형이래요! 전배우자 성격 테스트 해보세요 ➡️`);
+      window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+    }
+
+    function shareFacebook() {
+      const url = encodeURIComponent("https://yourdomain.github.io/index.html");
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+
+    function copyLink() {
+      const link = "https://nayajc.github.io/TEST2/index.html";
+      navigator.clipboard.writeText(link).then(() => {
+        alert("링크가 복사되었습니다! 친구에게 붙여넣기 해보세요 ✨");
+      });
+    }
+  </script>
+</body>
+</html>
