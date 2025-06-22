@@ -1,13 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>My GitHub Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>전배우자 유형 테스트 💔</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+
+    .question {
+      margin-bottom: 30px;
+    }
+
+    .question h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background-color: #f1f1f1;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .options button:hover {
+      background-color: #ddd;
+    }
+
+    #result {
+      margin-top: 40px;
+      background-color: #f9f9f9;
+      border-left: 5px solid #764ba2;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-size: 1.2rem;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .start-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, GitHub Pages!</h1>
-  <script>
-    console.log("페이지가 정상적으로 로딩되었습니다!");
-  </script>
+  <div class="container">
+    <h1>전배우자 유형 테스트 💔</h1>
+    <p>아래 질문에 답하면 전 배우자의 유형을 분석해드립니다.</p>
+    <div id="quiz"></div>
+    <button class="start-btn" onclick="startTest()">테스트 시작하기</button>
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
